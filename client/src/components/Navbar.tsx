@@ -3,16 +3,19 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const menuItems = [
     {
+      route: "/",
       title: "Genders",
     },
     {
+      route: "/users",
       title: "Users",
     },
   ];
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      {/* <nav className="navbar navbar-expand-lg bg-body-tertiary"> */}
+      <nav className="navbar navbar-expand-lg bg-light shadow-sm">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
             RnL Demo
@@ -32,7 +35,11 @@ const Navbar = () => {
             <ul className="navbar-nav">
               {menuItems.map((menuItem, index) => (
                 <li className="nav-item" key={index}>
-                  <Link className="nav-link" to={"#"}>
+                  {/* <Link className="nav-link" to={"#"}> */}
+                  <Link
+                    className="nav-link text-dark px-2 rounded hover-bg"
+                    to={menuItem.route}
+                  >
                     {menuItem.title}
                   </Link>
                 </li>
