@@ -68,9 +68,14 @@ const AddGenderForm = ({ onGenderAdded }: AddGenderFormProps) => {
 
   return (
     <>
-      <form onSubmit={handleStoreGender}>
+      {/* <form onSubmit={handleStoreGender}>
         <div className="form-group">
           <div className="mb-3">
+            <label htmlFor="gender">Gender</label>
+            <input */}
+      <form onSubmit={handleStoreGender}>
+        <div className="form-group mt-4">
+          <div className="mb-3 border-3 border p-3 rounded">
             <label htmlFor="gender">Gender</label>
             <input
               type="text"

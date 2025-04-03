@@ -47,8 +47,11 @@ const GendersTable = ({ refreshGenders }: GendersTableProps) => {
 
   return (
     <>
-      <table className="table table-hover">
+      {/* <table className="table table-hover">
         <thead>
+          <tr className="align-middle"> */}
+      <table className="table table-hover border shadow-sm rounded mt-4">
+        <thead className="bg-light">
           <tr className="align-middle">
             <th>No.</th>
             <th>Gender</th>

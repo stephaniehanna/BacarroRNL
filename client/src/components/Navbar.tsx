@@ -15,9 +15,15 @@ const Navbar = () => {
   return (
     <>
       {/* <nav className="navbar navbar-expand-lg bg-body-tertiary"> */}
-      <nav className="navbar navbar-expand-lg bg-light shadow-sm">
+      {/* <nav className="navbar navbar-expand-lg bg-warning shadow-sm">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
+            RnL Demo
+          </a> */}
+
+      <nav className="navbar navbar-expand-lg bg-info shadow-lg">
+        <div className="container-fluid">
+          <a className="navbar-brand text-white fw-bold" href="#">
             RnL Demo
           </a>
           <button

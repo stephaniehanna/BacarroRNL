@@ -93,10 +93,10 @@ const DeleteGenderForm = ({ onDeleteGender }: DeleteGenderFormProps) => {
         </div>
       ) : (
         <form onSubmit={handleDestroyGender}>
-          <h5 className="text-danger text-center fw-bold p-3 border border-danger rounded shadow-lg bg-light">
+          <h5 className="text-danger text-center fw-bold p-3 border mt-4 border-danger rounded shadow-lg bg-light">
             ⚠️ Are you sure you want to delete this gender?
           </h5>
-          <div className="form-group">
+          <div className="form-group mt-4">
             <div className="mb-3">
               <label htmlFor="gender">Gender</label>
               <input
