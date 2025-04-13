@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
 
-    use HasFactory, HasApiTokens, Notifiable;
+    use HasFactory , HasApiTokens, Notifiable;
 
     protected $table = 'tbl_users';
     protected $primaryKey = 'user_id';
