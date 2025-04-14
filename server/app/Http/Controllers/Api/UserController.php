@@ -81,7 +81,7 @@ class UserController extends Controller
        $age = date_diff(date_create($validated['birth_date']), date_create('now'))->y;
 
        $user->update([
-         'first_name' => $validated['first_name'],
+        'first_name' => $validated['first_name'],
         'middle_name' => $validated['middle_name'],
         'last_name' => $validated['last_name'],
         'suffix_name' => $validated['suffix_name'],
@@ -98,4 +98,15 @@ class UserController extends Controller
        ], 200);
 
     }
+
+    public function destroyUser(User $user) {
+        $user->update([
+            'is_deleted' => true
+        ]);
+
+        return response()->json([
+            'message' => 'User Successfully Deleted.'
+        ], 200);
+    }
 }
+

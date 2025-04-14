@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ErrorHandler from "../../../handler/ErrorHandler";
-import GenderFieldErrors from "../../../interfaces/GenderFieldErrors";
+import { GenderFieldErrors } from "../../../interfaces/GenderFieldErrors";
 import GenderService from "../../../services/GenderService";
 import Spinner from "../../Spinner";
 import SpinnerSmall from "../../SpinnerSmall";
@@ -122,7 +122,10 @@ const EditGenderForm = ({ onGenderUpdate }: EditGenderFormProps) => {
         <form onSubmit={handleUpdateGender}>
           <div className="form-group">
             <div className="mb-3">
-              <label htmlFor="gender">Gender</label>
+              <label htmlFor="gender">
+                <br />
+                Gender
+              </label>
               <input
                 type="text"
                 className={`form-control ${
