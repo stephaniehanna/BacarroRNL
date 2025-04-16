@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import ErrorHandler from "../../../handler/ErrorHandler";
 import { LoginFieldErrors } from "../../../interfaces/LoginFieldErrors";
+import AlertMessage from "../../AlertMessage";
 import SpinnerSmall from "../../SpinnerSmall";
 
 const LoginForm = () => {
@@ -15,6 +16,10 @@ const LoginForm = () => {
     password: "",
     errors: {} as LoginFieldErrors,
   });
+
+  const [message, setMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -44,10 +49,7 @@ const LoginForm = () => {
             errors: error.response.data.errors,
           }));
         } else if (error.response.status === 401) {
-          setState((prevState) => ({
-            ...prevState,
-            errors: { general: error.response.data.message },
-          }));
+          handleShowAlertMessage(error.response.data.message, false, true);
         } else {
           ErrorHandler(error, null);
         }
@@ -60,31 +62,61 @@ const LoginForm = () => {
       });
   };
 
+  const handleShowAlertMessage = (
+    message: string,
+    isSuccess: boolean,
+    isVisible: boolean
+  ) => {
+    setMessage(message);
+    setIsSuccess(isSuccess);
+    setIsVisible(isVisible);
+  };
+
+  const handleCloseAlertMessage = () => {
+    setMessage("");
+    setIsSuccess(false);
+    setIsVisible(false);
+  };
+
   return (
     <>
+      <AlertMessage
+        message={message}
+        isSuccess={isSuccess}
+        isVisible={isVisible}
+        onClose={handleCloseAlertMessage}
+      />
       <form onSubmit={handleLogin}>
         <div className="mb-3">
           <label htmlFor="email">Email</label>
           <input
             type="text"
-            className="form-control"
+            className={`form-control ${state.errors.email ? "is-invalid" : ""}`}
             name="email"
             id="email"
-            value={state.password}
+            value={state.email}
             onChange={handleInputChange}
             autoFocus
           />
+          {state.errors.email && (
+            <span className="text-danger">{state.errors.email[0]}</span>
+          )}
         </div>
         <div className="mb-3">
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            className="form-control"
+            className={`form-control ${
+              state.errors.password ? "is-invalid" : ""
+            }`}
             name="password"
             id="password"
             value={state.password}
             onChange={handleInputChange}
           />
+          {state.errors.password && (
+            <span className="text-danger">{state.errors.password[0]}</span>
+          )}
         </div>
         <div className="d-flex justify-content-end">
           <button

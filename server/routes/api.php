@@ -17,8 +17,10 @@ Route::middleware('auth:sanctum')->group(function() {
     });
 
 
-    Route::controller(GenderController::class)->group(function() {
-        Route::get('loadGenders', 'loadGenders');
+});
+
+ Route::controller(GenderController::class)->group(function() {
+        Route::get('/loadGenders', 'loadGenders');
         Route::get('/getGender/{genderId}', 'getGender');
         Route::post('/storeGender', 'storeGender');
         Route::put('/updateGender/{gender}', 'updateGender');
@@ -31,8 +33,6 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::put('/updateUser/{user}', 'updateUser');
         Route::put('/destroyUser/{user}', 'destroyUser');
     });
-
-});
 
 
 // Route::get('/user', function (Request $request) {
